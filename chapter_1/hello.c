@@ -2,6 +2,6 @@
 
 int main()
 {
-	printf("hello, world\a"); /* \a stands for beep system alert */
+	printf("hello, world\b\n"); /* \a stands for beep system alert */
 	return 0;
 }

@@ -1,3 +1,4 @@
-hello\tworld
-ab\bc
-back\\slash
+ola
+ma
+kota
+gacka

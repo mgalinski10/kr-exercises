@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+float convert(float celsius);
+float convert(float celsius)
+{
+	return celsius * (9.0 / 5.0) + 32.0;
+}
+
 int main() 
 {
 	float fahr, celsius;
@@ -12,7 +18,7 @@ int main()
 	printf("%10s %10s\n", "CELSIUS", "FEHRENHEIT");
 	fahr = lower;
 	while (celsius <= upper) {
-		fahr = celsius * (9.0 / 5.0) + 32.0;
+		fahr = convert(celsius); 
 		printf("%10.0f %10.2f\n", celsius, fahr);
 		celsius = celsius + step;
 	}

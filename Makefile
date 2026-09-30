@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -std=c99
 
 GREEN = \033[32m
 YELLOW = \033[33m

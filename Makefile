@@ -1,26 +1,29 @@
-CC = gcc
-CFLAGS = -g -std=c99
+CC        = gcc
+CFLAGS    = -g -std=c99
 
-GREEN = \033[32m
+BUILD_DIR = build
+
+GREEN  = \033[32m
 YELLOW = \033[33m
-RED   = \033[31m
-RESET = \033[0m
+RED    = \033[31m
+RESET  = \033[0m
 
-OUT_DIR = $(dir $(FILE))build
-OUT     = $(OUT_DIR)/$(basename $(notdir $(FILE)))
+OUT = $(BUILD_DIR)/$(subst /src/,/,$(basename $(FILE)))
 
 .PHONY: build clean
 
 build:
 ifndef FILE
-	@echo "$(RED)[ ERROR ] $(RESET)File is not defined."
-	@echo "$(YELLOW)[ INFO ] $(RESET)Usage: make build FILE=chapter_1/hello.c"
-endif
-	@mkdir -p $(OUT_DIR)
+	@printf "$(RED)[ ERROR ] $(RESET)File is not defined.\n"
+	@printf "$(YELLOW)[ INFO ] $(RESET)Usage: make build FILE=chapter_1/src/hello.c\n"
+	@exit 1
+else
+	@mkdir -p $(dir $(OUT))
 	@$(CC) $(CFLAGS) $(FILE) -o $(OUT)
 	@printf "$(GREEN)[ OK ] $(RESET)Built $(OUT)\n"
+endif
 
-clean: 
-	@echo "Deleting compiled files..."
-	@rm -rf chapter_*/build/*
-	@echo "$(GREEN)[ OK ] $(RESET)All compiled files are deleted."
+clean:
+	@printf "Deleting compiled files...\n"
+	@rm -rf $(BUILD_DIR)/*
+	@printf "$(GREEN)[ OK ] $(RESET)All compiled files are deleted.\n"

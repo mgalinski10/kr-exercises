@@ -1,12 +1,20 @@
+/*
+    Does not handle quote characters inside char constants or esaped quotes in strings.
+*/
+
 #include <stdio.h>
 
-int current_character, next_character, is_inside_comment, temp_character;
+#define IN 1
+#define OUT 0
+
+
+int current_character, next_character, quotes_state, temp_character;
 
 int main() 
 {    
     while ((current_character = getchar()) != EOF)
     {
-        if (current_character == '/') 
+        if (current_character == '/' && quotes_state == OUT) 
         {
             next_character = getchar();
 
@@ -16,7 +24,7 @@ int main()
                 {
                     if (temp_character == '\n')
                     {
-                        temp_character = '\0';
+                        putchar('\n');
                         break;
                     }
                 }   
@@ -32,12 +40,10 @@ int main()
 
                         if (next_character == '/')
                         {
-                            temp_character = '\0'; // i don't know if it's neccessary
                             break;
                         }
 
                         ungetc(next_character, stdin);
-                        break;
                     }
                 }
             }
@@ -49,6 +55,18 @@ int main()
             }
         }
         else {
+            if (current_character == '"')
+            {
+                if (quotes_state == IN)
+                {
+                    quotes_state = OUT;
+                }
+                else 
+                {
+                    quotes_state = IN;
+                }
+            }
+
             putchar(current_character);
         }
     }

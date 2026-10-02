@@ -2,8 +2,8 @@
 
 
 int main() {
-    printf("Hello,     lkdjskajf
-    */
+    printf("Hello, // world!"); 
+    print("/* lkjlkj */");
     return 0;
 }
 

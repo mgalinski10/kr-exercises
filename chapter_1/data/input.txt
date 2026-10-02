@@ -4,9 +4,10 @@
 
 int main() // tricky comment to delete
 {
-    printf("Hello, world!"); /*
+    printf("Hello, // world!"); /*
     lkdjskajf
     */
+    print("/* lkjlkj */");
     return 0;
 }
 

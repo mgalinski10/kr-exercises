@@ -2,12 +2,39 @@
 
 // Some comment to delete
 
+/** doc-style comment **/
+/*
+ * multi-line comment
+ * with "quotes" and 'apostrophes' and // slashes
+ */
+
 int main() // tricky comment to delete
 {
+    int a = 10, b = 2;
+    char c1 = '"';          // double quote char constant
+    char c2 = '\'';         // escaped single quote
+    char c3 = '\\';         // backslash char constant
+    char c4 = '/';          /* slash char constant */
+
     printf("Hello, // world!"); /*
     lkdjskajf
     */
-    print("/* lkjlkj */");
+    printf("/* lkjlkj */");
+    printf("She said \"// not a comment\"\n");
+    printf("path: C:\\"); // comment after escaped backslash
+    printf("http://example.com\n");
+    printf("" "/*" "*/" "");
+    printf("it's /* fine */\n"); // it's a comment with an apostrophe
+
+    a = a / b;              // division, not a comment
+    a = a/b/2;
+    a = a / /* inline comment */ b;
+    a = a /* comment */ + b;
+
+    // /* block start inside line comment
+    /* // line comment inside block comment */
+    /* stars *** inside ** comment ***/
+
     return 0;
 }
 

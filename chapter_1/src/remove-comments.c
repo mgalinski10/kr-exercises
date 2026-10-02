@@ -1,23 +1,16 @@
-/* 
-Quote characters inside char constants ('"') and escaped quotes inside strings ("\"") are not handled.
-*/
-
 #include <stdio.h>
-
-#define IN 1
-#define OUT 0
 
 void skip_line_comment();
 void skip_block_comment();
+void copy_quoted(int quote);
 
 int main() 
 {    
     int current_character, next_character;
-    int double_quotes = OUT;
 
     while ((current_character = getchar()) != EOF)
     {
-        if (current_character == '/' && double_quotes == OUT) 
+        if (current_character == '/') 
         {
             next_character = getchar();
 
@@ -28,7 +21,6 @@ int main()
 
             else if (next_character == '*')
             {
-
                 skip_block_comment();
             }
 
@@ -38,17 +30,38 @@ int main()
                 ungetc(next_character, stdin);
             }
         }
+        else if (current_character == '"' || current_character == '\'')
+        {
+            copy_quoted(current_character);
+        }
         else {
-            if (current_character == '"')
-            {
-                double_quotes = (double_quotes == OUT) ? IN : OUT;
-            }
-
             putchar(current_character);
         }
     }
 
     return 0;
+}
+
+void copy_quoted(int quote) {
+    int character;
+
+    putchar(quote);
+    while ((character = getchar()) != EOF)
+    {
+        putchar(character);
+
+        if (character == '\\')
+        {
+            if ((character = getchar()) == EOF)
+            {
+                break;
+            }
+            putchar(character);
+        }
+        else if (character == quote) {
+            break;
+        }
+    }
 }
 
 void skip_line_comment()

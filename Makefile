@@ -5,6 +5,8 @@ ERROR := \033[31m[ERROR]\033[0m
 .PHONY: help
 
 help: 
-	@echo "$(INFO) Info message."
-	@echo "$(OK) Success message."
-	@echo "$(ERROR) Error message."
+	@echo "$(INFO) Available targets: "
+	@echo "$(INFO) bookmark		- check which section did I read last time. Have to be manually updated."
+
+bookmark:
+	@echo "$(INFO) Section 2.2"

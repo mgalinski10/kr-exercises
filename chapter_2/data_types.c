@@ -2,6 +2,8 @@
 #include <limits.h>
 #include <float.h>
 
+enum months {JAN, FEB, MAR, APR}; // values are following: 0, 1, 2, 3
+
 int main() 
 {
     double pi = 3.14;

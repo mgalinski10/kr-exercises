@@ -9,4 +9,4 @@ help:
 	@echo "$(INFO) bookmark		- check which section did I read last time. Have to be manually updated."
 
 bookmark:
-	@echo "$(INFO) Section 2.2"
+	@echo "$(INFO) Section 2.3"

@@ -23,7 +23,10 @@ int main()
 
     return 0;
 }
-
+// x = 3
+// low = 3
+// mid = 3
+// high = 3
 // 0 1 2 3 4 5 6 7 8 9 10
 int binsearch(int x, int l[], int n)
 {

@@ -13,39 +13,53 @@
 
     int main()
     {
+        printf("Test 1: %d (expected 6)\n", strindex("ab", "abcabcab"));
+
+        printf("Test 2: %d (expected -1)\n", strindex("xyz", "hello"));
+
+        printf("Test 3: %d (expected 2)\n", strindex("abc", "xxabcab"));
+
         return 0;
     }
 
     int compare(char pattern[], char suspect[], int start_index)
     {
-        /*
         int pattern_index, suspect_index;
-        int is_equal = TRUE
-
+        int is_equal = TRUE;
+        
         pattern_index = 0;
-        suspect_index = start_index
-
-        Iterate (by using for loop) through suspect starts from suspect[start_index]:
-            - check if pattern[pattern_index] == '\b':
-                if yes: return is_equal
-            - check if pattern[pattern_index] == suspect[suspect_index]:
-                - if true: continue and increase indexes by one. 
-                - if not: set is_equal to FALSE and break.
-        */
-    return 0;
+        
+        for (suspect_index = start_index; pattern[pattern_index] != '\0'; ++suspect_index, ++pattern_index)
+        {
+            if (pattern[pattern_index] != suspect[suspect_index])
+            {
+                is_equal = FALSE;
+                break;
+            }
+        }
+        
+        return is_equal;
     }
 
     int strindex(char pattern[], char haystack[])
     {
-        /*
-        If haystack or pattern are empty, return -1
-        Iterate through haystack:
-            - check if haystack[haystach_index] is not '\0':
-                - if yes: return result, it is end of the string.
-            - check if haystack[haystack_index] equals pattern[0]:
-                - If yes: save haystack_index to temp variable and call function compare(char a[], char b[], haystack_index) 
-                - if no: continue and go to the next haystack's character.
-        */
-    return 0;
+        int haystack_index, result, is_there;
+        
+        is_there = FALSE;
+        result = -1;
+        for (haystack_index = 0; haystack[haystack_index] != '\0'; ++haystack_index)
+        {
+            if (haystack[haystack_index] == pattern[0])
+            {
+                is_there = compare(pattern, haystack, haystack_index);
+
+                if (is_there)
+                {
+                    result = haystack_index;
+                }
+            }
+        }
+
+        return result;
     }
 

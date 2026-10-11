@@ -11,7 +11,7 @@ void escape(char s[], char c[]);
 
 int main()
 {
-    char s[2 * LENGTH];   /* why 2 * LENGTH? think about the worst case */
+    char s[2 * LENGTH];
 
     char t1[] = "hello";
     char t2[] = "a\tb";
@@ -37,24 +37,25 @@ int main()
     return 0;
 }
 
+// "a\tb"
+// "\t\n"
+// "line1\\nline2"
 void escape(char s[], char c[])
 {
-    int current;
-    int i = 0;
-    for (int j = 0; j < LENGTH; ++j, ++i) 
+    int i, j, current;
+    j = 0;
+    for (i = 0; i < LENGTH; ++i, ++j) 
     {
         current = s[j];
         switch (current)
         {
             case '\n':
-                c[i] = ('\\');
-                c[i + 1] = ('\\');
-                c[i + 2] = ('n');
+                c[i] = '\\';
+                c[++i] = 'n';
                 break;
             case '\t':
-                c[i] = ('\\');
-                c[i + 1] = ('\\');
-                c[i + 2] = ('t');
+                c[i] = '\\';
+                c[++i] = 't';
                 break;
             default: 
                 c[i] = current;
